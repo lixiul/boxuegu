@@ -24,19 +24,19 @@
         <div class="navs">
             <ul class="list-unstyled">
                 <li>
-                    <a href="./index.html" class="active">
+                    <a href="./index.html">
                         <i class="fa fa-home"></i>
                         仪表盘
                     </a>
                 </li>
                 <li>
-                    <a href="./user_list.html">
+                    <a href="../user/list.html">
                         <i class="fa fa-bell"></i>
                         用户管理
                     </a>
                 </li>
                 <li>
-                    <a href="./teacher_list.html">
+                    <a href="../teacher/list.html">
                         <i class="fa fa-bell"></i>
                         讲师管理
                     </a>
@@ -47,31 +47,31 @@
                         课程管理
                         <i class="arrow fa fa-angle-right"></i>
                     </a>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled" style="display: block;">
                         <li>
-                            <a href="./course_add.html">
+                            <a href="./add.html" class="active">
                                  课程添加
                             </a>
                         </li>
                         <li>
-                            <a href="./course_list.html">
+                            <a href="list.html">
                                 课程列表
                             </a>
                         </li>
                         <li>
-                            <a href="./course_category.html">
+                            <a href="category.html">
                                 课程分类
                             </a>
                         </li>
                         <li>
-                            <a href="./course_topic.html">
+                            <a href="topic.html">
                                 课程专题
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="./advert_list.html">
+                    <a href="../advert_list.html">
                         <i class="fa fa-bell"></i>
                         广告管理
                     </a>
@@ -117,7 +117,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="./settings.html">
+                            <a href="../home/settings.html">
                                 <i class="fa fa-user"></i>
                                 个人中心
                             </a>
@@ -136,80 +136,39 @@
                     </ul>
                 </nav>          
             </div>
-            <!-- 个人资料 -->
-            <div class="body teacher-profile">
-                <div class="profile">
-                    <div class="row survey">
-                        <div class="col-xs-3">
-                            <div class="cell money">
-                                <i class="fa fa-money"></i>
-                                <span>我的收入</span>
-                                <h5>￥11.11</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="cell th">
-                                <i class="fa fa-th"></i>
-                                <span>课程数量</span>
-                                <h5>12</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="cell user">
-                                <i class="fa fa-user"></i>
-                                <span>用户数量</span>
-                                <h5>236</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="cell eye">
-                                <i class="fa fa-eye"></i>
-                                <span>浏览量</span>
-                                <h5>22435</h5>
-                            </div>
-                        </div>
+            <div class="body course-add">
+                <!-- 面包屑 -->
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">课程管理</a></li>
+                    <li class="active">课程添加</li>
+                </ol>
+                <div class="steps create">
+                    <div class="title">
+                        <h5>创建课程 <small>CREATE A COURSE</small></h5>
                     </div>
-                    <div class="chart">
-                        <div id="main" style="width: 600px;height:400px;"></div>
+                    <form action="" class="form-horizontal col-xs-7">
+                        <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">课程标题</label>
+                            <div class="col-xs-9">
+                                <input type="text" class="form-control input-sm" placeholder="请填写课程标题">
+                            </div>
+                        </div>
+                        <div class="col-xs-11">
+                            <a href="add_step1.html" class="btn btn-success btn-sm pull-right">创建课程</a>
+                        </div>
+                    </form>
+                    <div class="extra col-xs-3">
+                        <h5>从视频专辑导入课程</h5>
+                        <p>已支持优酷、腾讯视频、网易公开课、爱奇艺教育的视频专辑导入。</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="./assets/jquery/jquery.min.js"></script>
     <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="./assets/nprogress/nprogress.js"></script>
-    <script src="./assets/echarts/echarts.min.js"></script>
     <script src="./js/common.js"></script>
-    <script>
-
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-
-    </script>
 </body>
 </html>
