@@ -27,7 +27,9 @@ requirejs.config({
         courseCategoryAdd:'/js/course/category_add',
         courseList:'/js/course/list',
         courseTopic:'/js/course/topic',
-        common:'/js/common/common'
+        common:'/js/common/common',
+
+        cookie:'/lib/jquery-cookie/jquery.cookie'
 
     },
     shim:{
@@ -42,53 +44,64 @@ require(['jquery','bootstrap','common']);
 /*根据每个页面的pathname来加载对应的js文件*/
 (function(window){
     var pathName = window.location.pathname;
-    switch (pathName){
-        case '/html/user/list.html':
-            require(['userList']);
-            break;
-        case '/html/user/profile.html':
-            require(['userProfile']);
-            break;
-        case '/html/teacher/add.html':
-            require(['teacherAdd']);
-            break;
-        case '/html/teacher/list.html':
-            require(['teacherLsit']);
-            break;
-        case '/html/home/login.html':
-            require(['homeLogin']);
-            break;
-        case '/html/home/repass.html':
-            require(['homeRepass']);
-            break;
-        case '/html/home/settings.html':
-            require(['homeSettings']);
-            break;
-        case '/html/course/add.html':
-            require(['courseAdd']);
-            break;
-        case '/html/course/add_step1.html':
-            require(['courseAddStep1']);
-            break;
-        case '/html/course/add_step2.html':
-            require(['courseAddStep3']);
-            break;
-        case '/html/course/add_step3.html':
-            require(['courseAddStep3']);
-            break;
-        case '/html/course/category.html':
-            require(['courseCategory']);
-            break;
-        case '/html/course/category_add.html':
-            require(['courseCategoryAdd']);
-            break;
-        case '/html/course/list.html':
-            require(['courseList']);
-            break;
-        case '/html/course/topic.html':
-            require(['courseTopic']);
-            break;
-        default :
-            break;
-    }
+    require(['jquery','cookie'],function($,undefined){
+        var sessID = $.cookie('PHPSESSID');
+        /*先判断登陆状态，根据SESSID来判断
+        * 1.如果是在登陆页面，有SESSID，就跳到首页，如果没有，就不管
+        * 2.如果不是在登陆页面，没有SESSID，就跳转到登陆页面，如果有就不管*/
+        if(pathName === '/html/home/login.html' && sessID){
+            location.href = '/';
+        }else if(pathName !== '/html/home/login.html' && !sessID){
+            location.href = '/html/home/login.html';
+        }
+        switch (pathName){
+            case '/html/user/list.html':
+                require(['userList']);
+                break;
+            case '/html/user/profile.html':
+                require(['userProfile']);
+                break;
+            case '/html/teacher/add.html':
+                require(['teacherAdd']);
+                break;
+            case '/html/teacher/list.html':
+                require(['teacherLsit']);
+                break;
+            case '/html/home/login.html':
+                require(['homeLogin']);
+                break;
+            case '/html/home/repass.html':
+                require(['homeRepass']);
+                break;
+            case '/html/home/settings.html':
+                require(['homeSettings']);
+                break;
+            case '/html/course/add.html':
+                require(['courseAdd']);
+                break;
+            case '/html/course/add_step1.html':
+                require(['courseAddStep1']);
+                break;
+            case '/html/course/add_step2.html':
+                require(['courseAddStep3']);
+                break;
+            case '/html/course/add_step3.html':
+                require(['courseAddStep3']);
+                break;
+            case '/html/course/category.html':
+                require(['courseCategory']);
+                break;
+            case '/html/course/category_add.html':
+                require(['courseCategoryAdd']);
+                break;
+            case '/html/course/list.html':
+                require(['courseList']);
+                break;
+            case '/html/course/topic.html':
+                require(['courseTopic']);
+                break;
+            default :
+                break;
+        }
+    });
 })(window);
