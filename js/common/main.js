@@ -15,18 +15,19 @@ requirejs.config({
         teacherAdd:'/js/teacher/add',
         teacherLsit:'/js/teacher/list',
         //home
-        homeLogin:'js/home/login',
-        homeRepass:'js/home/repass',
-        homeSettings:'js/home/settings',
+        homeLogin:'/js/home/login',
+        homeRepass:'/js/home/repass',
+        homeSettings:'/js/home/settings',
         //course
-        courseAdd:'js/course/add',
-        courseAddStep1:'js/course/add_step1',
-        courseAddStep2:'js/course/add_step2',
-        courseAddStep3:'js/course/add_step3',
-        courseCategory:'js/course/category',
-        courseCategoryAdd:'js/course/category_add',
-        courseList:'js/course/list',
-        courseTopic:'js/course/topic',
+        courseAdd:'/js/course/add',
+        courseAddStep1:'/js/course/add_step1',
+        courseAddStep2:'/js/course/add_step2',
+        courseAddStep3:'/js/course/add_step3',
+        courseCategory:'/js/course/category',
+        courseCategoryAdd:'/js/course/category_add',
+        courseList:'/js/course/list',
+        courseTopic:'/js/course/topic',
+        common:'/js/common/common'
 
     },
     shim:{
@@ -36,7 +37,7 @@ requirejs.config({
     }
 });
 
-require(['jquery','bootstrap']);
+require(['jquery','bootstrap','common']);
 
 /*根据每个页面的pathname来加载对应的js文件*/
 (function(window){
