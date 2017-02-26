@@ -21,29 +21,29 @@
                     <li class="active">讲师添加</li>
                 </ol>
                 <div class="teacher-add">
-                    <form action="" class="form-horizontal col-xs-offset-2">
+                    <form action="" class="form-horizontal col-xs-offset-2" id="addTeacherForm">
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">姓名</label>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control input-sm" placeholder="讲师名称">
+                                <input type="text" class="form-control input-sm" placeholder="讲师名称" name='tc_name'>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">密码</label>
                             <div class="col-xs-4">
-                                <input type="password" class="form-control input-sm">
+                                <input type="password" class="form-control input-sm" name='tc_pass'>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">入职时间</label>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" class="form-control input-sm" name='tc_join_date'>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">类型</label>
                             <div class="col-xs-2">
-                                <select name="" class="form-control input-sm">
+                                <select name="" class="form-control input-sm" id="teacher_type">
                                     <option value="">讲师</option>
                                     <option value="">管理员</option>
                                 </select>
@@ -53,16 +53,16 @@
                             <label for="" class="col-xs-3 control-label">性别</label>
                             <div class="col-xs-4">
                                 <label class="radio-inline">
-                                    <input type="radio" checked> 男
+                                    <input type="radio" checked name="tc_gender" value="0"> 男
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio"> 女
+                                    <input type="radio" name="tc_gender" value="1"> 女
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-7">
-                                <a href="../advert_list.html" class="btn btn-success btn-sm pull-right"> 添 加 </a>
+                                <a href="javascript:;" class="btn btn-success btn-sm pull-right" id="addTeacher"> 添 加 </a>
                             </div>                          
                         </div>
                     </form>

@@ -25,8 +25,6 @@ define(['jquery','cookie'],function($,undefined){
     }catch(e){
         userInfo = {};
     }
-
-
     $('.aside .profile h4').html(userInfo.tc_name?userInfo.tc_name:'你没名字');
     $('.aside .profile img').attr('src',userInfo.tc_avatar?userInfo.tc_avatar:'/images/default.png');
 

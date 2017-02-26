@@ -7,11 +7,11 @@ define(['jquery','cookie'],function($,undefined){
         $.ajax({
             type:'post',
             url:'/v6/login',
-            //data:$(this).serialize(),
-            data:{
-                tc_name:$('#tc_name').val(),
-                tc_pass:$('#tc_pass').val(),
-            },
+            data:$(this).serialize(),
+            //data:{
+            //    tc_name:$('#tc_name').val(),
+            //    tc_pass:$('#tc_pass').val(),
+            //},
             success:function(data){
                 if(data.code === 200){
                     /*登录成功把返回的数据存储在cookie中*/
