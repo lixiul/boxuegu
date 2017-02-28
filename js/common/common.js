@@ -2,9 +2,25 @@
  * Created by Administrator on 2017/2/26.
  */
 define(['jquery','cookie'],function($,undefined){
-    $('.navs a').on('click',function(){
-       $(this).next().slideToggle();
+    /*ajax loading*/
+    $(document).ajaxStart(function(){
+        $('.overlay').show();
     });
+    $(document).ajaxStop(function(){
+        $('.overlay').hide();
+    });
+
+    /*导航二级菜单显示隐藏切换效果*/
+    $('.navs a').on('click',function(){
+        $(this).next().slideToggle();
+    });
+    //左侧导航切换的选中状态
+    /*通话当前页面的pathname来做*/
+    var pathname = window.location.pathname;
+    $('.navs a').removeClass('active')
+        .filter('[href="'+pathname+'"]')
+        .addClass('active')
+        .parents('ul').show();
 
     /*退出功能*/
     $('#logout').on('click',function(){

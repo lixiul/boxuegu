@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/2/25.
  */
-define(['jquery'],function($){
+define(['jquery','cookie','nProgress','common'],function($,undefined,nProgress,undefined){
     /*获取类型*/
     var finalData = '';
     var tc_type = null;
@@ -27,4 +27,5 @@ define(['jquery'],function($){
             }
         });
     });
+    nProgress.done();
 });

@@ -1,7 +1,16 @@
 /**
  * Created by Administrator on 2017/2/25.
  */
-define(['jquery','cookie'],function($,undefined){
+define(['jquery','cookie','nProgress','common'],function($,undefined,nProgress,undefined){
+    /*获取用户的历史登陆头像*/
+    var userInfo = null;
+    try{
+        /*如果$.cookie('userInfo')返回的是undefined，那么JSON.parse(undefined)会报错*/
+        userInfo =JSON.parse($.cookie('userInfo'));
+    }catch(e){
+        userInfo = {};
+    }
+    $('.login .avatar img').attr('src',userInfo.tc_avatar?userInfo.tc_avatar:'/images/default.png');
     /*登陆功能*/
     $('#form-login').on('submit', function () {
         $.ajax({
@@ -27,4 +36,6 @@ define(['jquery','cookie'],function($,undefined){
         });
        return false;
     });
+
+    nProgress.done();
 });

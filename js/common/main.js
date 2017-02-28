@@ -8,6 +8,7 @@ requirejs.config({
         bootstrap:'/lib/bootstrap/js/bootstrap.min',
 
         /*自己写的js*/
+        index:'/js/index',
         //user
         userList:'/js/user/list',
         userProfile:'/js/user/profile',
@@ -29,8 +30,8 @@ requirejs.config({
         courseTopic:'/js/course/topic',
         common:'/js/common/common',
 
-        cookie:'/lib/jquery-cookie/jquery.cookie'
-
+        cookie:'/lib/jquery-cookie/jquery.cookie',
+        nProgress:'/lib/nprogress/nprogress'
     },
     shim:{
         bootstrap:{
@@ -38,7 +39,9 @@ requirejs.config({
         }
     }
 });
-
+require(['nProgress'],function(nProgress){
+    nProgress.start();
+});
 require(['jquery','bootstrap','common']);
 
 /*根据每个页面的pathname来加载对应的js文件*/
@@ -55,6 +58,9 @@ require(['jquery','bootstrap','common']);
             location.href = '/html/home/login.html';
         }
         switch (pathName){
+            case '/':
+                require(['index']);
+                break;
             case '/html/user/list.html':
                 require(['userList']);
                 break;

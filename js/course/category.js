@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2017/2/25.
  */
-define(['jquery'],function($){
+define(['jquery','cookie','nProgress','common'],function($,undefined,nProgress,undefined){
     console.log('课程的category脚本加载完成');
+    nProgress.done();
 });
