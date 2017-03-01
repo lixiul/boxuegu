@@ -24,7 +24,7 @@ define(['jquery','cookie'],function($,undefined){
 
     /*退出功能*/
     $('#logout').on('click',function(){
-        $.post('v6/logout',function(data){
+        $.post('/v6/logout',function(data){
             if(data.code == 200){
                 console.log(1);
                 location.href = '/html/home/login.html';

@@ -31,7 +31,8 @@ requirejs.config({
         common:'/js/common/common',
 
         cookie:'/lib/jquery-cookie/jquery.cookie',
-        nProgress:'/lib/nprogress/nprogress'
+        nProgress:'/lib/nprogress/nprogress',
+        artTemplate:'lib/artTemplate/template'
     },
     shim:{
         bootstrap:{
@@ -42,7 +43,7 @@ requirejs.config({
 require(['nProgress'],function(nProgress){
     nProgress.start();
 });
-require(['jquery','bootstrap','common']);
+require(['jquery','bootstrap']);
 
 /*根据每个页面的pathname来加载对应的js文件*/
 (function(window){
