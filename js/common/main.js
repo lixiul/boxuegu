@@ -30,13 +30,25 @@ requirejs.config({
         courseTopic:'/js/course/topic',
         common:'/js/common/common',
 
+        /*cookie插件*/
         cookie:'/lib/jquery-cookie/jquery.cookie',
+        /*页面加载进度条*/
         nProgress:'/lib/nprogress/nprogress',
-        artTemplate:'lib/artTemplate/template'
+        /*模板*/
+        artTemplate:'lib/artTemplate/template',
+        /*小工具*/
+        util:'js/common/util',
+
+        /*日期插件*/
+        datePicker:'lib/bootstrap-datepicker/js/bootstrap-datepicker.min',
+        datePickerLanguage:'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
     },
     shim:{
         bootstrap:{
             deps:['jquery']
+        },
+        datePickerLanguage:{
+            deps:['jquery','datePicker']
         }
     }
 });

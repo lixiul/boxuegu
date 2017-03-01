@@ -70,10 +70,11 @@
             <td>{{list.tc_cellphone}}</td>
             <td>{{list.tc_email}}</td>
             <td>{{list.tc_join_date}}</td>
-            <td data-id={{list.tc_id}}>
+            <td data-id={{list.tc_id}} data-status={{list.tc_status}}>
                 <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs teacher-view">查 看</a>
-                <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
-                <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
+                <a href="add.html?tc_id={{list.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
+                <!--0是注销 1是开启-->
+                <a href="javascript:;" class="btn {{list.tc_status ==0?'btn-success':'btn-warning'}} btn-xs teacher-handle">{{list.tc_status ==0?'开启':'注销'}}</a>
             </td>
         </tr>
         {{/each}}
