@@ -30,5 +30,21 @@ define([],{
     },
     extend:function(){
 
+    },
+    /*设置localStorage&过期时间*/
+    setStorage:function(key,value){
+        var curTime = new Date().getTime();
+        localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
+    },
+    /*获取localStorage&过期时间*/
+    getStorage:function(key,exp){
+        var data = localStorage.getItem(key);
+        var dataObj = JSON.parse(data);
+        var dataObjDatatoJson = dataObj.data;
+        if (dataObjDatatoJson && new Date().getTime() - dataObj.time>exp) {
+            return false;
+        }else{
+            return dataObjDatatoJson;
+        }
     }
 });

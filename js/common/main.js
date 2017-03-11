@@ -35,13 +35,22 @@ requirejs.config({
         /*页面加载进度条*/
         nProgress:'/lib/nprogress/nprogress',
         /*模板*/
-        artTemplate:'lib/artTemplate/template',
+        artTemplate:'/lib/artTemplate/template',
         /*小工具*/
-        util:'js/common/util',
+        util:'/js/common/util',
 
         /*日期插件*/
-        datePicker:'lib/bootstrap-datepicker/js/bootstrap-datepicker.min',
-        datePickerLanguage:'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
+        datePicker:'/lib/bootstrap-datepicker/js/bootstrap-datepicker.min',
+        datePickerLanguage:'/lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+
+        //市级联动插件
+        region:'/lib/region/jquery.region',
+
+        //ckEdit 富文本编辑器 不依赖其他的包
+        ckEdit:'/lib/ckeditor/ckeditor',
+
+        /*图片上传插件，基于jq，不支持模块化*/
+        uploadify:'/lib/uploadify/jquery.uploadify.min',
     },
     shim:{
         bootstrap:{
@@ -49,7 +58,15 @@ requirejs.config({
         },
         datePickerLanguage:{
             deps:['jquery','datePicker']
+        },
+        uploadify:{
+            deps:['jquery']
+        },
+        /*也可以不配，因为 CKEDIT 是暴露在全局的变量*/
+        ckEdit:{
+            exports:'CKEDITOR'
         }
+
     }
 });
 require(['nProgress'],function(nProgress){
@@ -102,7 +119,7 @@ require(['jquery','bootstrap']);
                 require(['courseAddStep1']);
                 break;
             case '/html/course/add_step2.html':
-                require(['courseAddStep3']);
+                require(['courseAddStep2']);
                 break;
             case '/html/course/add_step3.html':
                 require(['courseAddStep3']);

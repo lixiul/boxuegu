@@ -16,7 +16,21 @@ define(['jquery','cookie'],function($,undefined){
     });
     //左侧导航切换的选中状态
     /*通话当前页面的pathname来做*/
+
+    /*先做个映射*/
+    var pathMap={
+        '/html/course/add_step1.html':'/html/course/add.html',
+        '/html/course/add_step2.html':'/html/course/add.html',
+        '/html/course/add_step3.html':'/html/course/add.html',
+        '/html/course/category_add.html':'html/course/category.html',
+    };
     var pathname = window.location.pathname;
+    for(var key in pathMap){
+        pathname == key?pathname=pathMap[key]:pathname;
+    }
+
+
+
     $('.navs a').removeClass('active')
         .filter('[href="'+pathname+'"]')
         .addClass('active')

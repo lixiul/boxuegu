@@ -1,19 +1,36 @@
 /**
  * Created by Administrator on 2017/2/25.
  */
-define(['jquery','cookie','nProgress','common','artTemplate'],function($,undefined,nProgress,undefined,artTemplate){
+define(['jquery','cookie','nProgress','common','artTemplate','util'],
+    function($,undefined,nProgress,undefined,artTemplate,util){
     /*如果用缓存，那么就先加载缓存，没有再请求数据*/
     var teacherListCache;
+    var exp = 120000;//大概一分钟的时间戳
     try{
-        teacherListCache = JSON.parse(localStorage.getItem('teacherListCache'));
+        /*方法2：获取缓存*/
+        teacherListCache = util.getStorage('teacherListCache',exp);
+
+        /*方法1：*/
+        //teacherListCache = JSON.parse(localStorage.getItem('teacherListCache'));
+        //var tCacheData = teacherListCache.val;
+
     }catch(e){}
+        console.log(teacherListCache);
+        //之前的判断：tCacheData && !(new Date().getTime() -teacherListCache.time > exp)
     if(teacherListCache){
+        //var html = artTemplate('teacher-list-tpl',{list:tCacheData});
         var html = artTemplate('teacher-list-tpl',{list:teacherListCache});
         $('#teacher-list-tbody').html(html);
     }else{
         $.get('/v6/teacher',function(data){
             if(data.code == 200){
-                teacherListCache = localStorage.setItem('teacherListCache',JSON.stringify(data.result));
+                var curTime = new Date().getTime();//当前存储数据的时间
+                /*这个是没有设置缓存时间版本的*/
+                //teacherListCache = localStorage.setItem('teacherListCache',JSON.stringify(data.result));
+                /*这个是设置了缓存时间的，没有用封装的方法*/
+                //localStorage.setItem('teacherListCache',JSON.stringify({val:data.result,time:curTime}));
+                /*设置缓存，这个是设置了缓存时间，用了缓存的方法的*/
+                util.setStorage('teacherListCache',data.result);
                 var html = artTemplate('teacher-list-tpl',{list:data.result});
                 $('#teacher-list-tbody').html(html);
             }
